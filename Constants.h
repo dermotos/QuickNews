@@ -24,5 +24,7 @@
 #define kRDCTextBottomPadding 3
 #define kRDCTextSidePadding 10
 #define kRDCInterTextPadding 4
+#define kRDCImageHeight 60
+#define kRDCImageWidth  90
 
 @end

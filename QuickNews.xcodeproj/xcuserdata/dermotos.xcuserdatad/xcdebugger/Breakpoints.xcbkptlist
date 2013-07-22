@@ -112,11 +112,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCCellContentView.m"
-         timestampString = "396193215.586296"
+         timestampString = "396198009.910815"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
+         startingLineNumber = "136"
+         endingLineNumber = "136"
          landmarkName = "+computeRowHeightOfWidth:withHeaderText:slugText:displayingImage:"
          landmarkType = "5">
       </FileBreakpoint>

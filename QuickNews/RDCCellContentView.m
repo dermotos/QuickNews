@@ -23,7 +23,7 @@
          
          In all cases, a header text is visible. In the other two cases, the content text is visible. If an image is available, the context
          text will be narrower to allow for space for the image. Note that images can come back from the service in different sizes. For 
-         visual consistency, all images will be resized to the same size.
+         visual consistency, all images will be resized to the same size (90 x 60).
          
          */
         
@@ -44,17 +44,23 @@
             CGSize slugLineSize;
             CGSize imageSize;
             UIImageView *iconView;
-//            if(imageURL){
-//                //Slugtext and an image are available
-//                slugLineSize = [slugline sizeWithFont:[UIFont fontWithName:kRDCSlugFontName size:kRDCSlugFontSize]
-//                                    constrainedToSize:CGSizeMake(self.frame.size.width - (kRDCTextPadding *2) - (kRDCTextPadding + kRDCImageWidth), CGFLOAT_MAX)
-//                                        lineBreakMode:NSLineBreakByWordWrapping];
-//            }
-//            else{
+            if(imageURL){
+                dddd
+                //NOTE: Image should appear vertially centered on right, pushing header text too. It's simply if an image exists, then reduce available width for both labels accordingly.
+                
+                //Slugtext and an image are available
+                slugLineSize = [RDCCellContentView computeSizeOfText:slugline forWidth:self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth)  type:RDCTextTypeSlug];
+                self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth), self.headLineLabel.frame.size.height + kRDCInterTextPadding, kRDCImageWidth, kRDCImageHeight)];
+                self.imageView.backgroundColor = [UIColor yellowColor];
+                self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+                [self addSubview:self.imageView];
+                
+            }
+            else{
                 //Only the slugtext is available
             slugLineSize = [RDCCellContentView computeSizeOfText:slugline forWidth:self.frame.size.width type:RDCTextTypeSlug];
 
-           // }
+            }
             //NSLog(@"Slugline width: %f",slugLineSize.width);
             self.slugLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(kRDCTextSidePadding, self.headLineLabel.frame.size.height + kRDCInterTextPadding, slugLineSize.width, slugLineSize.height)];
             self.slugLineLabel.text =  slugline;
