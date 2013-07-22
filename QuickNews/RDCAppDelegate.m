@@ -8,23 +8,21 @@
 
 #import "RDCAppDelegate.h"
 
-#import "RDCViewController.h"
-
 @implementation RDCAppDelegate
 
 - (void)dealloc
 {
     [_window release];
-    [_viewController release];
+    [_navigationController release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.viewController = [[[RDCViewController alloc] initWithNibName:@"RDCViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    self.listController = [[[RDCNewsListViewController alloc] initWithStyle:UITableViewStylePlain] autorelease];
+    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:self.listController] autorelease];
+    self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -55,5 +53,7 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end

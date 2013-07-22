@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		142A995D179D6705002384C1 /* testdata.txt in Resources */ = {isa = PBXBuildFile; fileRef = 142A995C179D6705002384C1 /* testdata.txt */; };
+		142A9960179D6E79002384C1 /* RDCStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 142A995F179D6E79002384C1 /* RDCStoryViewController.m */; };
+		149C22AB179BC568002970A7 /* RDCCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C22AA179BC568002970A7 /* RDCCellContentView.m */; };
 		14B8175D179B704F001A371C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8175C179B704F001A371C /* UIKit.framework */; };
 		14B8175F179B704F001A371C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8175E179B704F001A371C /* Foundation.framework */; };
 		14B81761179B704F001A371C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B81760179B704F001A371C /* CoreGraphics.framework */; };
@@ -16,13 +19,15 @@
 		14B8176F179B704F001A371C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B8176E179B704F001A371C /* Default.png */; };
 		14B81771179B704F001A371C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B81770179B704F001A371C /* Default@2x.png */; };
 		14B81773179B704F001A371C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B81772179B704F001A371C /* Default-568h@2x.png */; };
-		14B81776179B704F001A371C /* RDCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B81775179B704F001A371C /* RDCViewController.m */; };
-		14B81779179B704F001A371C /* RDCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B81777179B704F001A371C /* RDCViewController.xib */; };
 		14B81781179B704F001A371C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B81780179B704F001A371C /* SenTestingKit.framework */; };
 		14B81782179B704F001A371C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8175C179B704F001A371C /* UIKit.framework */; };
 		14B81783179B704F001A371C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8175E179B704F001A371C /* Foundation.framework */; };
-		14B8178B179B704F001A371C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 14B81789179B704F001A371C /* InfoPlist.strings */; };
-		14B8178E179B704F001A371C /* QuickNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8178D179B704F001A371C /* QuickNewsTests.m */; };
+		14B8179D179B7363001A371C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14B8179C179B7363001A371C /* config.plist */; };
+		14B8179E179B7363001A371C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14B8179C179B7363001A371C /* config.plist */; };
+		14B817AB179B82FC001A371C /* RDCNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B817AA179B82FC001A371C /* RDCNewsListViewController.m */; };
+		14B817AC179B82FC001A371C /* RDCNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B817AA179B82FC001A371C /* RDCNewsListViewController.m */; };
+		14B817AF179B89ED001A371C /* RDCAsyncDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B817AE179B89ED001A371C /* RDCAsyncDownloader.m */; };
+		14B817B0179B89ED001A371C /* RDCAsyncDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B817AE179B89ED001A371C /* RDCAsyncDownloader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		142A9959179D3AC8002384C1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		142A995C179D6705002384C1 /* testdata.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testdata.txt; sourceTree = "<group>"; };
+		142A995E179D6E79002384C1 /* RDCStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDCStoryViewController.h; sourceTree = "<group>"; };
+		142A995F179D6E79002384C1 /* RDCStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDCStoryViewController.m; sourceTree = "<group>"; };
+		149C22A9179BC568002970A7 /* RDCCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDCCellContentView.h; sourceTree = "<group>"; };
+		149C22AA179BC568002970A7 /* RDCCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDCCellContentView.m; sourceTree = "<group>"; };
 		14B81759179B704F001A371C /* QuickNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14B8175C179B704F001A371C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		14B8175E179B704F001A371C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,15 +60,13 @@
 		14B8176E179B704F001A371C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		14B81770179B704F001A371C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		14B81772179B704F001A371C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		14B81774179B704F001A371C /* RDCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDCViewController.h; sourceTree = "<group>"; };
-		14B81775179B704F001A371C /* RDCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDCViewController.m; sourceTree = "<group>"; };
-		14B81778179B704F001A371C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RDCViewController.xib; sourceTree = "<group>"; };
 		14B8177F179B704F001A371C /* QuickNewsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickNewsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14B81780179B704F001A371C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		14B81788179B704F001A371C /* QuickNewsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuickNewsTests-Info.plist"; sourceTree = "<group>"; };
-		14B8178A179B704F001A371C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		14B8178C179B704F001A371C /* QuickNewsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickNewsTests.h; sourceTree = "<group>"; };
-		14B8178D179B704F001A371C /* QuickNewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickNewsTests.m; sourceTree = "<group>"; };
+		14B8179C179B7363001A371C /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		14B817A9179B82FC001A371C /* RDCNewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDCNewsListViewController.h; sourceTree = "<group>"; };
+		14B817AA179B82FC001A371C /* RDCNewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDCNewsListViewController.m; sourceTree = "<group>"; };
+		14B817AD179B89ED001A371C /* RDCAsyncDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDCAsyncDownloader.h; sourceTree = "<group>"; };
+		14B817AE179B89ED001A371C /* RDCAsyncDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDCAsyncDownloader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +96,9 @@
 		14B81750179B704F001A371C = {
 			isa = PBXGroup;
 			children = (
+				142A995C179D6705002384C1 /* testdata.txt */,
+				142A9959179D3AC8002384C1 /* Constants.h */,
 				14B81762179B704F001A371C /* QuickNews */,
-				14B81786179B704F001A371C /* QuickNewsTests */,
 				14B8175B179B704F001A371C /* Frameworks */,
 				14B8175A179B704F001A371C /* Products */,
 			);
@@ -117,12 +127,17 @@
 		14B81762179B704F001A371C /* QuickNews */ = {
 			isa = PBXGroup;
 			children = (
+				14B817A9179B82FC001A371C /* RDCNewsListViewController.h */,
+				14B817AA179B82FC001A371C /* RDCNewsListViewController.m */,
+				14B81797179B7228001A371C /* Model */,
 				14B8176B179B704F001A371C /* RDCAppDelegate.h */,
 				14B8176C179B704F001A371C /* RDCAppDelegate.m */,
-				14B81774179B704F001A371C /* RDCViewController.h */,
-				14B81775179B704F001A371C /* RDCViewController.m */,
-				14B81777179B704F001A371C /* RDCViewController.xib */,
 				14B81763179B704F001A371C /* Supporting Files */,
+				14B8179C179B7363001A371C /* config.plist */,
+				149C22A9179BC568002970A7 /* RDCCellContentView.h */,
+				149C22AA179BC568002970A7 /* RDCCellContentView.m */,
+				142A995E179D6E79002384C1 /* RDCStoryViewController.h */,
+				142A995F179D6E79002384C1 /* RDCStoryViewController.m */,
 			);
 			path = QuickNews;
 			sourceTree = "<group>";
@@ -141,23 +156,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		14B81786179B704F001A371C /* QuickNewsTests */ = {
+		14B81797179B7228001A371C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				14B8178C179B704F001A371C /* QuickNewsTests.h */,
-				14B8178D179B704F001A371C /* QuickNewsTests.m */,
-				14B81787179B704F001A371C /* Supporting Files */,
+				14B817AD179B89ED001A371C /* RDCAsyncDownloader.h */,
+				14B817AE179B89ED001A371C /* RDCAsyncDownloader.m */,
 			);
-			path = QuickNewsTests;
-			sourceTree = "<group>";
-		};
-		14B81787179B704F001A371C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				14B81788179B704F001A371C /* QuickNewsTests-Info.plist */,
-				14B81789179B704F001A371C /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +241,8 @@
 				14B8176F179B704F001A371C /* Default.png in Resources */,
 				14B81771179B704F001A371C /* Default@2x.png in Resources */,
 				14B81773179B704F001A371C /* Default-568h@2x.png in Resources */,
-				14B81779179B704F001A371C /* RDCViewController.xib in Resources */,
+				14B8179D179B7363001A371C /* config.plist in Resources */,
+				142A995D179D6705002384C1 /* testdata.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14B8178B179B704F001A371C /* InfoPlist.strings in Resources */,
+				14B8179E179B7363001A371C /* config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +279,10 @@
 			files = (
 				14B81769179B704F001A371C /* main.m in Sources */,
 				14B8176D179B704F001A371C /* RDCAppDelegate.m in Sources */,
-				14B81776179B704F001A371C /* RDCViewController.m in Sources */,
+				14B817AB179B82FC001A371C /* RDCNewsListViewController.m in Sources */,
+				14B817AF179B89ED001A371C /* RDCAsyncDownloader.m in Sources */,
+				149C22AB179BC568002970A7 /* RDCCellContentView.m in Sources */,
+				142A9960179D6E79002384C1 /* RDCStoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14B8178E179B704F001A371C /* QuickNewsTests.m in Sources */,
+				14B817AC179B82FC001A371C /* RDCNewsListViewController.m in Sources */,
+				14B817B0179B89ED001A371C /* RDCAsyncDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,22 +310,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				14B81766179B704F001A371C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		14B81777179B704F001A371C /* RDCViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				14B81778179B704F001A371C /* en */,
-			);
-			name = RDCViewController.xib;
-			sourceTree = "<group>";
-		};
-		14B81789179B704F001A371C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				14B8178A179B704F001A371C /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -383,6 +377,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickNews/QuickNews-Prefix.pch";
 				INFOPLIST_FILE = "QuickNews/QuickNews-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -394,6 +389,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickNews/QuickNews-Prefix.pch";
 				INFOPLIST_FILE = "QuickNews/QuickNews-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -402,7 +398,7 @@
 		14B81795179B704F001A371C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/QuickNews.app/QuickNews";
+				BUNDLE_LOADER = "$(TARGET_BUILD_DIR)/QuickNews.app/QuickNews";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -452,6 +448,7 @@
 				14B81793179B704F001A371C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		14B81794179B704F001A371C /* Build configuration list for PBXNativeTarget "QuickNewsTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +457,7 @@
 				14B81796179B704F001A371C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

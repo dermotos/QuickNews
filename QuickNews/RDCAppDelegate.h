@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RDCNewsListViewController.h"
 
 @class RDCViewController;
 
@@ -14,6 +15,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) RDCViewController *viewController;
+@property (strong, nonatomic) UINavigationController *navigationController;
+@property (strong, nonatomic) RDCNewsListViewController *listController;
 
 @end
