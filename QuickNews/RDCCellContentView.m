@@ -97,13 +97,13 @@
         if(downloader.downloadedData){
             [imageCache setValue:downloader.downloadedData forKey:[url absoluteString]];
             
-            CGRect __block positionInSuperview = self.frame;
+            CGRect __block positionInSuperview = self.imageView.frame;
             self.imageView.frame = CGRectMake(positionInSuperview.origin.x + positionInSuperview.size.width, positionInSuperview.origin.y, positionInSuperview.size.width, positionInSuperview.size.height);
             self.imageView.image = [UIImage imageWithData:downloader.downloadedData];
             [UIView animateWithDuration:0.3 animations:^{
                 [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-                self.frame = positionInSuperview;
-                self.alpha = 1.0;
+                self.imageView.frame = positionInSuperview;
+                self.imageView.alpha = 1.0;
             }];
             
         }
