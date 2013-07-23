@@ -18,7 +18,7 @@
     self = [super init];
     if(self){
         self.navigationURL = url;
-        self.title = @"News";
+        self.title = @"News Story";
     }
     
     return self;
@@ -32,7 +32,18 @@
     [self.view addSubview:self.webView];
     self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.navigationURL]];
-    //TODO: Add activity indicator centre-view?
+}
+
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 - (void)didReceiveMemoryWarning

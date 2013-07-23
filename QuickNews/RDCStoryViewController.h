@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RDCStoryViewController : UIViewController
+@interface RDCStoryViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) NSURL *navigationURL;

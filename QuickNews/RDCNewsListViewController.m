@@ -34,6 +34,7 @@
     [super viewDidLoad];
     
     [self.navigationItem setTitle:@"Loading..."];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     self.headlineFont = [UIFont systemFontOfSize:50];
     self.slugLineFont = [UIFont systemFontOfSize:12];
     
@@ -59,6 +60,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.navigationItem setTitle:mainTitle];
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 [self.tableView reloadData];
                // [mainTitle release];
                 //[articles release];
@@ -69,6 +71,9 @@
         {
 #if(DEBUG)
             NSLog(@"Parsing of the the JSON object tree failed. Error: %@", error.description);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            });
 #endif
         }
         
@@ -116,7 +121,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Cell content created");
+    //NSLog(@"Cell content created");
     NSString *headLine = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"headLine"];
     NSString *slugLine = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"slugLine"];
     NSString *imagePath = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"thumbnailImageHref"];
@@ -128,7 +133,7 @@
     if(cell && cell.tag == self.tableView.frame.size.width)
     {
         //Cell already exists, just change the values of it's fields
-        RDCCellContentView *contentView = [cell.contentView.subviews objectAtIndex:0];
+         contentView = [cell.contentView.subviews objectAtIndex:0];
         
         [contentView updateWithFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:self.tableView heightForRowAtIndexPath:indexPath])
                             headLine: headLine
@@ -140,15 +145,25 @@
     {
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
         cell.tag = self.tableView.frame.size.width;
         contentView = [[RDCCellContentView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:self.tableView heightForRowAtIndexPath:indexPath])
                                                        headLine: headLine
                                                        slugLine: slugLine
                                                     andImageURL: [imagePath isKindOfClass:[NSNull class]] ? nil : [NSURL URLWithString:imagePath] andCache:self.imageCache];
-        [cell.contentView addSubview:contentView];
-
+       [cell.contentView addSubview:contentView];
 
     }
+    
+       
+    CAGradientLayer *backgroundGradient = [CAGradientLayer layer];
+    cell.backgroundView = [[UIView alloc] initWithFrame:contentView.frame];
+    backgroundGradient.frame = cell.backgroundView.bounds;
+    backgroundGradient.colors = [NSArray arrayWithObjects: (id)[RDCCellContentView colorFromHexString:kRDCBackgroundGradientTopColor].CGColor,
+                                 [RDCCellContentView colorFromHexString:kRDCBackgroundGradientBottomColor].CGColor, nil];
+    [cell.backgroundView.layer addSublayer:backgroundGradient];
+
+
 
     return cell;
 }
@@ -179,6 +194,9 @@
     
     
 }
+
+
+
 
 @end
 

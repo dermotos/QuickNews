@@ -10,10 +10,11 @@
 /*
  Remaining:
  ---Images (see above)
- Background image loading. Image should fade into view.
- Use CGGradient (get code from Eve)
- Add loader that appears when loading view initially, and when loading story view.
+ ---Background image loading. Image should fade into view.
+ ---Set fonts and change font colours and backgrounds
  
+ ---Add loader that appears when loading view initially, and when loading story view.
+ Use CGGradient (get code from Eve)
  
  Tidy up code
  Retain/Release. Test with analyzer.
@@ -32,19 +33,22 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+       
+        
         
         //The header should always exist
         CGSize headLineSize;
         if(imageURL)
-            headLineSize = [RDCCellContentView computeSizeOfText:headline forWidth:self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth) type:RDCTextTypeHeader];
+            headLineSize = [RDCCellContentView computeSizeOfText:headline forWidth:self.frame.size.width - (kRDCPadding + kRDCImageWidth) type:RDCTextTypeHeader];
         else
             headLineSize = [RDCCellContentView computeSizeOfText:headline forWidth:self.frame.size.width type:RDCTextTypeHeader];
         
-        self.headLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(kRDCTextSidePadding, kRDCTextTopPadding, headLineSize.width, headLineSize.height)];
+        self.headLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(kRDCPadding, kRDCPadding, headLineSize.width, headLineSize.height)];
         self.headLineLabel.text = headline;
         self.headLineLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.headLineLabel.numberOfLines = 0;
-        self.headLineLabel.backgroundColor = [UIColor blueColor];
+        self.headLineLabel.backgroundColor = [UIColor clearColor];
+        self.headLineLabel.textColor = [RDCCellContentView colorFromHexString:kRDCHeaderFontColor];
         self.headLineLabel.font = [UIFont fontWithName:kRDCHeaderFontName size:kRDCHeaderFontSize];
         [self addSubview:self.headLineLabel];
 
@@ -56,22 +60,23 @@
             CGSize imageSize;
             UIImageView *iconView;
             if(imageURL)
-                slugLineSize = [RDCCellContentView computeSizeOfText:slugline forWidth:self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth)  type:RDCTextTypeSlug];
+                slugLineSize = [RDCCellContentView computeSizeOfText:slugline forWidth:self.frame.size.width - (kRDCPadding + kRDCImageWidth)  type:RDCTextTypeSlug];
             else
                 slugLineSize = [RDCCellContentView computeSizeOfText:slugline forWidth:self.frame.size.width type:RDCTextTypeSlug];
 
-            self.slugLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(kRDCTextSidePadding, self.headLineLabel.frame.size.height + kRDCInterTextPadding, slugLineSize.width, slugLineSize.height)];
+            self.slugLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(kRDCPadding, self.headLineLabel.frame.size.height + kRDCPadding, slugLineSize.width, slugLineSize.height)];
             self.slugLineLabel.text =  slugline;
             self.slugLineLabel.lineBreakMode = NSLineBreakByWordWrapping;
             self.slugLineLabel.numberOfLines = 0;
             self.slugLineLabel.font = [UIFont fontWithName:kRDCSlugFontName size:kRDCSlugFontSize];
-            self.slugLineLabel.backgroundColor = [UIColor redColor];
+            self.slugLineLabel.backgroundColor = [UIColor clearColor];
+            self.slugLineLabel.textColor = [RDCCellContentView colorFromHexString:kRDCSlugFontColor];
             [self addSubview:self.slugLineLabel];
         }
         
         if(imageURL){
-            self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth), kRDCTextTopPadding, kRDCImageWidth, kRDCImageHeight)];
-            self.imageView.backgroundColor = [UIColor yellowColor];
+            self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - (kRDCPadding + kRDCImageWidth), kRDCPadding, kRDCImageWidth, kRDCImageHeight)];
+            self.imageView.backgroundColor = [UIColor clearColor];
             self.imageView.contentMode = UIViewContentModeScaleAspectFit;
             
             if(imageCache && [imageCache objectForKey:[imageURL absoluteString]]){
@@ -114,6 +119,10 @@
 
 - (void)updateWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL andCache:(NSMutableDictionary*)imageCache{
     //Reusing the existing contentView. As a result, existing views may need to be removed if they are no longer used
+    
+    self.frame = frame;
+  
+    
     if(!slugline && self.slugLineLabel)
     {
         [self.slugLineLabel removeFromSuperview]; //TODO: release?
@@ -129,11 +138,11 @@
     //Change the size of the labels to match their new content & change content
     CGSize headLineSize;
     if(imageURL)
-        headLineSize = [RDCCellContentView computeSizeOfText:headline forWidth:self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth) type:RDCTextTypeHeader];
+        headLineSize = [RDCCellContentView computeSizeOfText:headline forWidth:self.frame.size.width - (kRDCPadding + kRDCImageWidth) type:RDCTextTypeHeader];
     else
         headLineSize = [RDCCellContentView computeSizeOfText:headline forWidth:self.frame.size.width type:RDCTextTypeHeader];
    
-    self.headLineLabel.frame = CGRectMake(kRDCTextSidePadding, kRDCTextTopPadding, headLineSize.width, headLineSize.height);
+    self.headLineLabel.frame = CGRectMake(kRDCPadding, kRDCPadding, headLineSize.width, headLineSize.height);
     self.headLineLabel.text = headline;
     
     if(slugline)
@@ -141,21 +150,22 @@
         CGSize slugLineSize;
         CGSize imageSize;
         if(imageURL)
-            slugLineSize = [RDCCellContentView computeSizeOfText:slugline forWidth:self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth)  type:RDCTextTypeSlug];
+            slugLineSize = [RDCCellContentView computeSizeOfText:slugline forWidth:self.frame.size.width - (kRDCPadding + kRDCImageWidth)  type:RDCTextTypeSlug];
         else
             slugLineSize = [RDCCellContentView computeSizeOfText:slugline forWidth:self.frame.size.width type:RDCTextTypeSlug];
         if(!self.slugLineLabel)
         {
-            self.slugLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(kRDCTextSidePadding, self.headLineLabel.frame.size.height + kRDCInterTextPadding, slugLineSize.width, slugLineSize.height)];
+            self.slugLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(kRDCPadding, self.headLineLabel.frame.size.height + kRDCPadding, slugLineSize.width, slugLineSize.height)];
             self.slugLineLabel.lineBreakMode = NSLineBreakByWordWrapping;
             self.slugLineLabel.numberOfLines = 0;
             self.slugLineLabel.font = [UIFont fontWithName:kRDCSlugFontName size:kRDCSlugFontSize];
-            self.slugLineLabel.backgroundColor = [UIColor redColor];
+            self.slugLineLabel.backgroundColor = [UIColor clearColor];
+            self.slugLineLabel.textColor = [RDCCellContentView colorFromHexString:kRDCSlugFontColor];
             [self addSubview:self.slugLineLabel];
 
         }
         else{
-            self.slugLineLabel.frame = CGRectMake(kRDCTextSidePadding, self.headLineLabel.frame.size.height + kRDCInterTextPadding, slugLineSize.width, slugLineSize.height);
+            self.slugLineLabel.frame = CGRectMake(kRDCPadding, self.headLineLabel.frame.size.height + kRDCPadding, slugLineSize.width, slugLineSize.height);
         }
         
         self.slugLineLabel.text =  slugline;
@@ -165,7 +175,7 @@
         
         if(!self.imageView){
             //imageView doesn't exist, initialize it
-            self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth), kRDCTextTopPadding, kRDCImageWidth, kRDCImageHeight)];
+            self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - (kRDCPadding + kRDCImageWidth), kRDCPadding, kRDCImageWidth, kRDCImageHeight)];
             self.imageView.backgroundColor = [UIColor yellowColor];
             self.imageView.contentMode = UIViewContentModeScaleAspectFit;
             [self addSubview:self.imageView];
@@ -173,7 +183,7 @@
         }
         else{
             //ImageView already exists, reconfigure with new parameters:
-            self.imageView.frame = CGRectMake(self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth), kRDCTextTopPadding, kRDCImageWidth, kRDCImageHeight);
+            self.imageView.frame = CGRectMake(self.frame.size.width - (kRDCPadding + kRDCImageWidth), kRDCPadding, kRDCImageWidth, kRDCImageHeight);
             //NSLog(@"%@",self.imageView.superview);
         }
         if(imageCache && [imageCache objectForKey:[imageURL absoluteString]]){
@@ -197,7 +207,7 @@
 + (CGSize) computeSizeOfText:(NSString*) text forWidth:(float)contentWidth type:(RDCTextType)textType{
     UIFont *textFont = [UIFont fontWithName:(textType == RDCTextTypeHeader) ? kRDCHeaderFontName : kRDCSlugFontName
                                        size:(textType == RDCTextTypeHeader) ? kRDCHeaderFontSize : kRDCSlugFontSize];
-    CGSize computedSize = [text sizeWithFont:textFont constrainedToSize:CGSizeMake(contentWidth - (kRDCTextSidePadding * 2), CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize computedSize = [text sizeWithFont:textFont constrainedToSize:CGSizeMake(contentWidth - (kRDCPadding * 2), CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     return computedSize;
 }
 
@@ -208,22 +218,29 @@
      Note: It is assumed that a header text is always available.
      */
     
-    float headerHeight = [RDCCellContentView computeHeightOfText:headerText forWidth:imageAvailable ? contentWidth - (kRDCImageWidth + kRDCInterTextPadding) : contentWidth type:RDCTextTypeHeader] + kRDCTextTopPadding;
+    float headerHeight = [RDCCellContentView computeHeightOfText:headerText forWidth:imageAvailable ? contentWidth - (kRDCImageWidth + kRDCPadding) : contentWidth type:RDCTextTypeHeader] + kRDCPadding;
     float slugHeight = 0;
     if(slugText){
-        float slugTextWidth = (imageAvailable ? contentWidth - (kRDCImageWidth + kRDCInterTextPadding) : contentWidth) + kRDCTextSidePadding ;
-        slugHeight = [RDCCellContentView computeHeightOfText:slugText forWidth:slugTextWidth type:RDCTextTypeSlug] + kRDCInterTextPadding;
+        float slugTextWidth = (imageAvailable ? contentWidth - (kRDCImageWidth + kRDCPadding) : contentWidth) + kRDCPadding ;
+        slugHeight = [RDCCellContentView computeHeightOfText:slugText forWidth:slugTextWidth type:RDCTextTypeSlug] + kRDCPadding;
     }
     //NSLog(@"Computed row height: %f", headerHeight + slugHeight);
     float rowHeight = headerHeight + slugHeight;
     
-    if(imageAvailable && rowHeight < kRDCImageHeight + kRDCTextTopPadding)
-        rowHeight = kRDCImageHeight + (kRDCTextTopPadding * 2);
+    if(imageAvailable && rowHeight < kRDCImageHeight + kRDCPadding)
+        rowHeight = kRDCImageHeight + (kRDCPadding * 2);
     
-    return rowHeight;
+    return rowHeight + kRDCRowPadding;
 }
 
 
++ (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
 
 
 @end

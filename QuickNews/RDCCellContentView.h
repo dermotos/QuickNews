@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RDCAsyncDownloader.h"
+#import <QuartzCore/QuartzCore.h> //For the gradient layer
 
 
 
@@ -20,6 +21,7 @@ typedef enum {
 
 + (float) computeHeightOfText:(NSString*) text forWidth:(float)contentWidth type:(RDCTextType)textType;
 + (float) computeRowHeightOfWidth:(float)contentWidth withHeaderText:(NSString*) headerText slugText:(NSString*)slugText displayingImage:(BOOL)imageDisplayed;
++ (UIColor *)colorFromHexString:(NSString *)hexString;
 
 - (id)initWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL andCache:(NSMutableDictionary*)imageCache;
 - (void)updateWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL andCache:(NSMutableDictionary*)imageCache;
