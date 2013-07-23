@@ -42,12 +42,13 @@
         NSLog(@"Download of initial news JSON completed");
 #endif
 
-        NSString *filepath = [[NSBundle mainBundle] pathForResource:@"testdata" ofType:@"txt"];
-        NSError *error;
-        NSString *fileContents = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:&error];
-        NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:[fileContents dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
-        
-        //NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:downloader.downloadedData options:NSJSONReadingAllowFragments error:&error];
+         NSError *error;       
+//        NSString *filepath = [[NSBundle mainBundle] pathForResource:@"testdata" ofType:@"txt"];
+
+//        NSString *fileContents = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:&error];
+//        NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:[fileContents dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
+//        
+        NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:downloader.downloadedData options:NSJSONReadingAllowFragments error:&error];
         if(rootObject)
         {
             NSString *mainTitle = [rootObject objectForKey:@"name"];
@@ -104,6 +105,8 @@
     //Turn NSNulls into nil's
     slugLine = [slugLine isKindOfClass:[NSNull class]] ? nil : slugLine;
     
+   // NSLog(@"Row %d image: %@ - %i",indexPath.row, [[self.articles objectAtIndex:indexPath.row] objectForKey:@"thumbnailImageHref"], imageExists);
+    
     float height = [RDCCellContentView computeRowHeightOfWidth:tableView.frame.size.width withHeaderText:headLine slugText:slugLine displayingImage:imageExists];
     return height;
 
@@ -111,6 +114,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Cell content created");
     NSString *headLine = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"headLine"];
     NSString *slugLine = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"slugLine"];
     NSString *imagePath = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"thumbnailImageHref"];
@@ -118,7 +122,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     RDCCellContentView *contentView;
-    NSLog(@"%f",self.tableView.frame.size.width);
+    //NSLog(@"%f",self.tableView.frame.size.width);
     if(cell && cell.tag == self.tableView.frame.size.width)
     {
         //Cell already exists, just change the values of it's fields
@@ -147,9 +151,14 @@
     return cell;
 }
 
+//for iOS5 rotating
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     [self.tableView reloadData];
     return YES;
+}
+//for iOS6+ rotating
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view delegate

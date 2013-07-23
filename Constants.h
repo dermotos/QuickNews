@@ -20,11 +20,13 @@
 #define kRDCSlugFontSize 10
 #define kRDCSlugFontColor [UIColor blackColor]
 #define kRDCImageWidth 160
-#define kRDCTextTopPadding 3
-#define kRDCTextBottomPadding 3
-#define kRDCTextSidePadding 10
-#define kRDCInterTextPadding 4
+#define kRDCTextTopPadding 2
+#define kRDCTextBottomPadding 2
+#define kRDCTextSidePadding 2
+#define kRDCInterTextPadding 2
 #define kRDCImageHeight 60
 #define kRDCImageWidth  90
+
+
 
 @end
