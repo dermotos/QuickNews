@@ -9,13 +9,14 @@
 
 /*
  Remaining:
- Images (see above)
+ ---Images (see above)
  Background image loading. Image should fade into view.
  Use CGGradient (get code from Eve)
  Add loader that appears when loading view initially, and when loading story view.
+ 
+ 
  Tidy up code
  Retain/Release. Test with analyzer.
- 
  Any further improvements, such as icon, default images, customize title bar, etc...
  
  */
@@ -26,7 +27,7 @@
 
 @implementation RDCCellContentView
 
-- (id)initWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL
+- (id)initWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL andCache:(NSMutableDictionary*)imageCache
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -72,13 +73,46 @@
             self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth), kRDCTextTopPadding, kRDCImageWidth, kRDCImageHeight)];
             self.imageView.backgroundColor = [UIColor yellowColor];
             self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            
+            if(imageCache && [imageCache objectForKey:[imageURL absoluteString]]){
+                //load pre-existing image from cache
+                self.imageView.alpha = 1.0;
+                self.imageView.image = [UIImage imageWithData:[imageCache objectForKey:[imageURL absoluteString]]];
+            }
+            else{
+                //hide imageView and download image in the background
+                self.imageView.alpha = 0.0;
+                [self beginBackgroundDownloadFromURL:imageURL withCache:imageCache];
+            }
+
             [self addSubview:self.imageView];
-        }  
+        }
     }
     return self;
 }
 
-- (void)updateWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL{
+-(void)beginBackgroundDownloadFromURL:(NSURL*)url withCache:(NSMutableDictionary*) imageCache{
+    RDCAsyncDownloader __block *downloader = [[RDCAsyncDownloader alloc] init];
+    downloader.completionCallback = ^{
+        if(downloader.downloadedData){
+            [imageCache setValue:downloader.downloadedData forKey:[url absoluteString]];
+            
+            CGRect __block positionInSuperview = self.frame;
+            self.imageView.frame = CGRectMake(positionInSuperview.origin.x + positionInSuperview.size.width, positionInSuperview.origin.y, positionInSuperview.size.width, positionInSuperview.size.height);
+            self.imageView.image = [UIImage imageWithData:downloader.downloadedData];
+            [UIView animateWithDuration:0.3 animations:^{
+                [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+                self.frame = positionInSuperview;
+                self.alpha = 1.0;
+            }];
+            
+        }
+    };
+    [downloader beginDownloadFromURL:url];
+}
+
+
+- (void)updateWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL andCache:(NSMutableDictionary*)imageCache{
     //Reusing the existing contentView. As a result, existing views may need to be removed if they are no longer used
     if(!slugline && self.slugLineLabel)
     {
@@ -120,8 +154,7 @@
             [self addSubview:self.slugLineLabel];
 
         }
-        else
-        {
+        else{
             self.slugLineLabel.frame = CGRectMake(kRDCTextSidePadding, self.headLineLabel.frame.size.height + kRDCInterTextPadding, slugLineSize.width, slugLineSize.height);
         }
         
@@ -143,12 +176,17 @@
             self.imageView.frame = CGRectMake(self.frame.size.width - (kRDCTextSidePadding + kRDCImageWidth), kRDCTextTopPadding, kRDCImageWidth, kRDCImageHeight);
             //NSLog(@"%@",self.imageView.superview);
         }
-        
-        
+        if(imageCache && [imageCache objectForKey:[imageURL absoluteString]]){
+            //load pre-existing image from cache
+            self.imageView.alpha = 1.0;
+            self.imageView.image = [UIImage imageWithData:[imageCache objectForKey:[imageURL absoluteString]]];
+        }
+        else{
+            //hide imageView and download image in the background
+            self.imageView.alpha = 0.0;
+            [self beginBackgroundDownloadFromURL:imageURL withCache:imageCache];
+        }
     }
-
-    
-    
 }
 
 

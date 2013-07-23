@@ -24,6 +24,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        self.imageCache = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -79,7 +80,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    //Clear the image cache
+    [self.imageCache removeAllObjects];
 }
 
 #pragma mark - Table view data source
@@ -131,7 +133,7 @@
         [contentView updateWithFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:self.tableView heightForRowAtIndexPath:indexPath])
                             headLine: headLine
                             slugLine: slugLine
-                         andImageURL: [imagePath isKindOfClass:[NSNull class]] ? nil : [NSURL URLWithString:imagePath]];
+                         andImageURL: [imagePath isKindOfClass:[NSNull class]] ? nil : [NSURL URLWithString:imagePath] andCache:self.imageCache];
 
     }
     else
@@ -142,7 +144,7 @@
         contentView = [[RDCCellContentView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:self.tableView heightForRowAtIndexPath:indexPath])
                                                        headLine: headLine
                                                        slugLine: slugLine
-                                                    andImageURL: [imagePath isKindOfClass:[NSNull class]] ? nil : [NSURL URLWithString:imagePath]];
+                                                    andImageURL: [imagePath isKindOfClass:[NSNull class]] ? nil : [NSURL URLWithString:imagePath] andCache:self.imageCache];
         [cell.contentView addSubview:contentView];
 
 

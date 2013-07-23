@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RDCAsyncDownloader.h"
 
 
 
@@ -20,12 +21,12 @@ typedef enum {
 + (float) computeHeightOfText:(NSString*) text forWidth:(float)contentWidth type:(RDCTextType)textType;
 + (float) computeRowHeightOfWidth:(float)contentWidth withHeaderText:(NSString*) headerText slugText:(NSString*)slugText displayingImage:(BOOL)imageDisplayed;
 
-- (id)initWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL;
-- (void)updateWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL;
+- (id)initWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL andCache:(NSMutableDictionary*)imageCache;
+- (void)updateWithFrame:(CGRect)frame headLine: (NSString*)headline slugLine:(NSString*)slugline andImageURL:(NSURL*)imageURL andCache:(NSMutableDictionary*)imageCache;
 
-@property (nonatomic, retain) UILabel * headLineLabel;
-@property (nonatomic, retain) UILabel * slugLineLabel;
-@property (nonatomic, retain) NSString * imageURL;
-@property (nonatomic, retain) UIImageView * imageView;
+@property (nonatomic, strong) UILabel * headLineLabel;
+@property (nonatomic, strong) UILabel * slugLineLabel;
+@property (nonatomic, strong) NSString * imageURL;
+@property (nonatomic, strong) UIImageView * imageView;
 
 @end

@@ -15,6 +15,6 @@
 
 @interface RDCNewsListViewController : UITableViewController
 
-
+@property (nonatomic,retain) NSMutableDictionary *imageCache;
 
 @end

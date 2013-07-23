@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCNewsListViewController.m"
-         timestampString = "396267708.591322"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "52"
-         endingLineNumber = "52"
+         startingLineNumber = "53"
+         endingLineNumber = "53"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCNewsListViewController.m"
-         timestampString = "396267708.591322"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "70"
-         endingLineNumber = "70"
+         startingLineNumber = "71"
+         endingLineNumber = "71"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCNewsListViewController.m"
-         timestampString = "396267708.591322"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "95"
-         endingLineNumber = "95"
+         startingLineNumber = "97"
+         endingLineNumber = "97"
          landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCNewsListViewController.m"
-         timestampString = "396267708.591322"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
+         startingLineNumber = "55"
+         endingLineNumber = "55"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCNewsListViewController.m"
-         timestampString = "396267708.591322"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
+         startingLineNumber = "60"
+         endingLineNumber = "60"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,12 +99,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCCellContentView.m"
-         timestampString = "396264877.466171"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "32"
-         endingLineNumber = "32"
-         landmarkName = "-initWithFrame:headLine:slugLine:andImageURL:"
+         startingLineNumber = "33"
+         endingLineNumber = "33"
+         landmarkName = "-initWithFrame:headLine:slugLine:andImageURL:andCache:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -112,11 +112,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCCellContentView.m"
-         timestampString = "396268200.351281"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "158"
-         endingLineNumber = "158"
+         startingLineNumber = "196"
+         endingLineNumber = "196"
          landmarkName = "@implementation RDCCellContentView"
          landmarkType = "3">
       </FileBreakpoint>
@@ -125,11 +125,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCNewsListViewController.m"
-         timestampString = "396267708.591322"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "106"
-         endingLineNumber = "106"
+         startingLineNumber = "108"
+         endingLineNumber = "108"
          landmarkName = "-tableView:heightForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -138,11 +138,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCNewsListViewController.m"
-         timestampString = "396267708.591322"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "50"
-         endingLineNumber = "50"
+         startingLineNumber = "51"
+         endingLineNumber = "51"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,7 +164,20 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCNewsListViewController.m"
-         timestampString = "396268421.137924"
+         timestampString = "396272989.437303"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "173"
+         endingLineNumber = "173"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "QuickNews/RDCNewsListViewController.m"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "171"
@@ -177,24 +190,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCNewsListViewController.m"
-         timestampString = "396268421.137924"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "169"
-         endingLineNumber = "169"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "QuickNews/RDCNewsListViewController.m"
-         timestampString = "396267708.591322"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "110"
-         endingLineNumber = "110"
+         startingLineNumber = "112"
+         endingLineNumber = "112"
          landmarkName = "-tableView:heightForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -203,12 +203,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCCellContentView.m"
-         timestampString = "396268200.351281"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "89"
-         endingLineNumber = "89"
-         landmarkName = "-updateWithFrame:headLine:slugLine:andImageURL:"
+         startingLineNumber = "123"
+         endingLineNumber = "123"
+         landmarkName = "-updateWithFrame:headLine:slugLine:andImageURL:andCache:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -216,12 +216,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCCellContentView.m"
-         timestampString = "396268200.351281"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
-         landmarkName = "-updateWithFrame:headLine:slugLine:andImageURL:"
+         startingLineNumber = "125"
+         endingLineNumber = "125"
+         landmarkName = "-updateWithFrame:headLine:slugLine:andImageURL:andCache:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -229,12 +229,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "QuickNews/RDCCellContentView.m"
-         timestampString = "396268200.351281"
+         timestampString = "396272989.437303"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "131"
-         endingLineNumber = "131"
-         landmarkName = "-updateWithFrame:headLine:slugLine:andImageURL:"
+         startingLineNumber = "164"
+         endingLineNumber = "164"
+         landmarkName = "-updateWithFrame:headLine:slugLine:andImageURL:andCache:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
