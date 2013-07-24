@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>QuickNewsLogicTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>14308B66179FEBF900EA560C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>14B81758179B704F001A371C</key>
 		<dict>
 			<key>primary</key>

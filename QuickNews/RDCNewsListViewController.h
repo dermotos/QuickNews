@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "RDCCellContentView.h"
 #import "RDCStoryViewController.h"
-
-#define padding 3
-#define imageWidth 100
+#import "RDCStylizer.h"
+#import "UIView+RDCGaussianFade.h"
 
 @interface RDCNewsListViewController : UITableViewController
 
+-(void)downloadData;
+
 @property (nonatomic,retain) NSMutableDictionary *imageCache;
+@property (nonatomic,retain) UIRefreshControl *refresher;
 
 
 @end

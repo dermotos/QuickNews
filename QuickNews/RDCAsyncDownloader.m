@@ -25,14 +25,12 @@
 
 - (void)cancelDownload{
     [self.connection cancel];
-    [self.connection release];
     self.connection = nil;
     self.downloadedData = nil;
 }
 
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-    [self.connection release];
     self.connection = nil;
     self.downloadedData = nil;
 }
@@ -45,7 +43,6 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     if(self.completionCallback)
         self.completionCallback();
-    [self.connection release];
     self.connection = nil; 
 }
 

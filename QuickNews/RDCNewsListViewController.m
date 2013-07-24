@@ -12,9 +12,6 @@
 @interface RDCNewsListViewController ()
 // |articles| is an array of NSDictionaries. Each dictionary represents a summary of a news article.
 @property (nonatomic, retain) NSArray *articles;
-@property (nonatomic, retain) UIFont *headlineFont;
-@property (nonatomic, retain) UIFont *slugLineFont;
-
 @end
 
 @implementation RDCNewsListViewController
@@ -24,7 +21,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        self.imageCache = [[NSMutableDictionary alloc] init];
+        self.imageCache = [[[NSMutableDictionary alloc] init] autorelease];
     }
     return self;
 }
@@ -32,38 +29,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.navigationItem setTitle:@"Loading..."];
+    [self.navigationItem setTitle:@"Loading..."];    
+    Class uiRefresh = NSClassFromString(@"UIRefreshControl");
+    if(uiRefresh)
+    {
+        self.refresher = [[[UIRefreshControl alloc] init] autorelease];
+        [self.refresher addTarget:self action:@selector(downloadData)
+                 forControlEvents:UIControlEventValueChanged];
+        self.refresher.tintColor = [RDCStylizer colorFromHexString:@"#48a4d7"];
+        self.refreshControl = self.refresher;
+    }
+    [self downloadData];
+
+}
+
+-(void)downloadData{
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    self.headlineFont = [UIFont systemFontOfSize:50];
-    self.slugLineFont = [UIFont systemFontOfSize:12];
-    
     RDCAsyncDownloader *downloader = [[RDCAsyncDownloader alloc] init];
     [downloader setCompletionCallback:^{
 #if(DEBUG)
         NSLog(@"Download of initial news JSON completed");
 #endif
-
-         NSError *error;       
-//        NSString *filepath = [[NSBundle mainBundle] pathForResource:@"testdata" ofType:@"txt"];
-
-//        NSString *fileContents = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:&error];
-//        NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:[fileContents dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
-//        
+        
+        NSError *error;
+        //        For testing:
+        //        NSString *filepath = [[NSBundle mainBundle] pathForResource:@"testdata" ofType:@"txt"];
+        
+        //        NSString *fileContents = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:&error];
+        //        NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:[fileContents dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
+        //
         NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:downloader.downloadedData options:NSJSONReadingAllowFragments error:&error];
         if(rootObject)
         {
             NSString *mainTitle = [rootObject objectForKey:@"name"];
             NSArray *articles = [rootObject objectForKey:@"items"];
             self.articles = articles;
-    
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.navigationItem setTitle:mainTitle];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                [self.refresher endRefreshing];
                 [self.tableView reloadData];
-               // [mainTitle release];
-                //[articles release];
             });
             
         }
@@ -71,21 +77,26 @@
         {
 #if(DEBUG)
             NSLog(@"Parsing of the the JSON object tree failed. Error: %@", error.description);
+#endif
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                [self.refresher endRefreshing];
+                
             });
-#endif
+
         }
         
     }];
     
     [downloader beginDownloadFromURL:[NSURL URLWithString:kRDCNewsURL]];
+    [downloader release];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    //Clear the image cache
+    //Clear the image cache when running low on memory. Images will be re-downloaded as required.
     [self.imageCache removeAllObjects];
 }
 
@@ -109,7 +120,7 @@
     NSString *headLine = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"headLine"];
     NSString *slugLine = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"slugLine"];
     BOOL imageExists = ![[[self.articles objectAtIndex:indexPath.row] objectForKey:@"thumbnailImageHref"] isEqual:[NSNull null]];
-    //Turn NSNulls into nil's
+    //Turn NSNulls into nil for consistency
     slugLine = [slugLine isKindOfClass:[NSNull class]] ? nil : slugLine;
     
    // NSLog(@"Row %d image: %@ - %i",indexPath.row, [[self.articles objectAtIndex:indexPath.row] objectForKey:@"thumbnailImageHref"], imageExists);
@@ -121,7 +132,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"Cell content created");
     NSString *headLine = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"headLine"];
     NSString *slugLine = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"slugLine"];
     NSString *imagePath = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"thumbnailImageHref"];
@@ -129,12 +139,11 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     RDCCellContentView *contentView;
-    //NSLog(@"%f",self.tableView.frame.size.width);
+
     if(cell && cell.tag == self.tableView.frame.size.width)
     {
         //Cell already exists, just change the values of it's fields
          contentView = [cell.contentView.subviews objectAtIndex:0];
-        
         [contentView updateWithFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:self.tableView heightForRowAtIndexPath:indexPath])
                             headLine: headLine
                             slugLine: slugLine
@@ -143,27 +152,24 @@
     }
     else
     {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        //Creating a new cell
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         cell.tag = self.tableView.frame.size.width;
-        contentView = [[RDCCellContentView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:self.tableView heightForRowAtIndexPath:indexPath])
+        contentView = [[[RDCCellContentView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:self.tableView heightForRowAtIndexPath:indexPath])
                                                        headLine: headLine
                                                        slugLine: slugLine
-                                                    andImageURL: [imagePath isKindOfClass:[NSNull class]] ? nil : [NSURL URLWithString:imagePath] andCache:self.imageCache];
+                                                    andImageURL: [imagePath isKindOfClass:[NSNull class]] ? nil : [NSURL URLWithString:imagePath] andCache:self.imageCache] autorelease];
        [cell.contentView addSubview:contentView];
-
     }
     
        
     CAGradientLayer *backgroundGradient = [CAGradientLayer layer];
-    cell.backgroundView = [[UIView alloc] initWithFrame:contentView.frame];
+    cell.backgroundView = [[[UIView alloc] initWithFrame:contentView.frame] autorelease];
     backgroundGradient.frame = cell.backgroundView.bounds;
-    backgroundGradient.colors = [NSArray arrayWithObjects: (id)[RDCCellContentView colorFromHexString:kRDCBackgroundGradientTopColor].CGColor,
-                                 [RDCCellContentView colorFromHexString:kRDCBackgroundGradientBottomColor].CGColor, nil];
+    backgroundGradient.colors = [NSArray arrayWithObjects: (id)[RDCStylizer colorFromHexString:kRDCBackgroundGradientTopColor].CGColor,
+                                 [RDCStylizer colorFromHexString:kRDCBackgroundGradientBottomColor].CGColor, nil];
     [cell.backgroundView.layer addSublayer:backgroundGradient];
-
-
 
     return cell;
 }
@@ -185,14 +191,17 @@
     NSString *urlString = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"webHref"];
     if(kRDCLoadMobileStory)
     {
+        //Replaces the desktop version of the site with the mobile version. Note that when sharing, the tinyURL is used, which
+        //will continue to point to the correct site version for the recipient.
         urlString = [urlString stringByReplacingOccurrencesOfString:@"http://www.smh.com.au/" withString:@"http://m.smh.com.au/"];
         urlString = [urlString stringByReplacingOccurrencesOfString:@"http://news.smh.com.au/" withString:@"http://m.smh.com.au/"];
     }
     NSURL *url = [NSURL URLWithString:urlString];
-    RDCStoryViewController *storyController = [[RDCStoryViewController alloc] initWithURL:url];
+    NSURL *tinyUrl = [NSURL URLWithString: [[self.articles objectAtIndex:indexPath.row] objectForKey:@"tinyUrl"]];
+    NSString *headLine = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"headLine"];
+    
+    RDCStoryViewController *storyController = [[[RDCStoryViewController alloc] initWithURL:url tinyUrl:tinyUrl headLine:headLine] autorelease];
     [self.navigationController pushViewController:storyController animated:YES];
-    
-    
 }
 
 

@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Twitter/Twitter.h>
 
-@interface RDCStoryViewController : UIViewController <UIWebViewDelegate>
+@interface RDCStoryViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) NSURL *navigationURL;
+@property (nonatomic, strong) NSURL *tinyURL;
+@property (nonatomic, strong) NSString *headLine;
 
-- (id)initWithURL:(NSURL *)url;
+//Initializes the ViewController with all information necessary to display the story. The tinyURL and headLine are required
+//for sharing purposes.
+- (id)initWithURL:(NSURL *)url tinyUrl:(NSURL*) tinyURL headLine:(NSString*) headLine;
 
 @end

@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "RDCNewsListViewController.h"
+#import "RDCStylizer.h"
 
 @class RDCViewController;
 
 @interface RDCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) RDCNewsListViewController *listController;
 
