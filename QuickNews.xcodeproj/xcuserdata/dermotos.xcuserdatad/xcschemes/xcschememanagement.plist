@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>QuickNewsTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -28,6 +33,11 @@
 			<true/>
 		</dict>
 		<key>14B8177E179B704F001A371C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>14EFEA4D17E0755A00196F21</key>
 		<dict>
 			<key>primary</key>
 			<true/>

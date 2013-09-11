@@ -38,6 +38,12 @@
 		14B8176D179B704F001A371C /* RDCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8176C179B704F001A371C /* RDCAppDelegate.m */; };
 		14B817AB179B82FC001A371C /* RDCNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B817AA179B82FC001A371C /* RDCNewsListViewController.m */; };
 		14B817AF179B89ED001A371C /* RDCAsyncDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B817AE179B89ED001A371C /* RDCAsyncDownloader.m */; };
+		14EFEA4F17E0755A00196F21 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B81780179B704F001A371C /* SenTestingKit.framework */; };
+		14EFEA5017E0755A00196F21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8175C179B704F001A371C /* UIKit.framework */; };
+		14EFEA5117E0755A00196F21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8175E179B704F001A371C /* Foundation.framework */; };
+		14EFEA5717E0755A00196F21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 14EFEA5517E0755A00196F21 /* InfoPlist.strings */; };
+		14EFEA5A17E0755A00196F21 /* QuickNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EFEA5917E0755A00196F21 /* QuickNewsTests.m */; };
+		14FD460017E0763B0093810D /* RDCAsyncDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B817AE179B89ED001A371C /* RDCAsyncDownloader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +94,13 @@
 		14B817AA179B82FC001A371C /* RDCNewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDCNewsListViewController.m; sourceTree = "<group>"; };
 		14B817AD179B89ED001A371C /* RDCAsyncDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDCAsyncDownloader.h; sourceTree = "<group>"; };
 		14B817AE179B89ED001A371C /* RDCAsyncDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDCAsyncDownloader.m; sourceTree = "<group>"; };
+		14EFEA4E17E0755A00196F21 /* QuickNewsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickNewsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14EFEA5417E0755A00196F21 /* QuickNewsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuickNewsTests-Info.plist"; sourceTree = "<group>"; };
+		14EFEA5617E0755A00196F21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		14EFEA5817E0755A00196F21 /* QuickNewsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickNewsTests.h; sourceTree = "<group>"; };
+		14EFEA5917E0755A00196F21 /* QuickNewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickNewsTests.m; sourceTree = "<group>"; };
+		14EFEA5B17E0755A00196F21 /* QuickNewsTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickNewsTests-Prefix.pch"; sourceTree = "<group>"; };
+		14EFEA5F17E075C200196F21 /* AGWaitForAsyncTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGWaitForAsyncTestHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +115,16 @@
 				14B8175D179B704F001A371C /* UIKit.framework in Frameworks */,
 				14B8175F179B704F001A371C /* Foundation.framework in Frameworks */,
 				14B81761179B704F001A371C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14EFEA4A17E0755A00196F21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14EFEA4F17E0755A00196F21 /* SenTestingKit.framework in Frameworks */,
+				14EFEA5017E0755A00196F21 /* UIKit.framework in Frameworks */,
+				14EFEA5117E0755A00196F21 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +171,7 @@
 				142A995C179D6705002384C1 /* testdata.txt */,
 				142A9959179D3AC8002384C1 /* Constants.h */,
 				14B81762179B704F001A371C /* QuickNews */,
+				14EFEA5217E0755A00196F21 /* QuickNewsTests */,
 				14B8175B179B704F001A371C /* Frameworks */,
 				14B8175A179B704F001A371C /* Products */,
 			);
@@ -157,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				14B81759179B704F001A371C /* QuickNews.app */,
+				14EFEA4E17E0755A00196F21 /* QuickNewsTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -217,6 +242,27 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		14EFEA5217E0755A00196F21 /* QuickNewsTests */ = {
+			isa = PBXGroup;
+			children = (
+				14EFEA5F17E075C200196F21 /* AGWaitForAsyncTestHelper.h */,
+				14EFEA5817E0755A00196F21 /* QuickNewsTests.h */,
+				14EFEA5917E0755A00196F21 /* QuickNewsTests.m */,
+				14EFEA5317E0755A00196F21 /* Supporting Files */,
+			);
+			path = QuickNewsTests;
+			sourceTree = "<group>";
+		};
+		14EFEA5317E0755A00196F21 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14EFEA5417E0755A00196F21 /* QuickNewsTests-Info.plist */,
+				14EFEA5517E0755A00196F21 /* InfoPlist.strings */,
+				14EFEA5B17E0755A00196F21 /* QuickNewsTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,6 +282,24 @@
 			productName = QuickNews;
 			productReference = 14B81759179B704F001A371C /* QuickNews.app */;
 			productType = "com.apple.product-type.application";
+		};
+		14EFEA4D17E0755A00196F21 /* QuickNewsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14EFEA5E17E0755A00196F21 /* Build configuration list for PBXNativeTarget "QuickNewsTests" */;
+			buildPhases = (
+				14EFEA4917E0755A00196F21 /* Sources */,
+				14EFEA4A17E0755A00196F21 /* Frameworks */,
+				14EFEA4B17E0755A00196F21 /* Resources */,
+				14EFEA4C17E0755A00196F21 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickNewsTests;
+			productName = QuickNewsTests;
+			productReference = 14EFEA4E17E0755A00196F21 /* QuickNewsTests.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -260,6 +324,7 @@
 			projectRoot = "";
 			targets = (
 				14B81758179B704F001A371C /* QuickNews */,
+				14EFEA4D17E0755A00196F21 /* QuickNewsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -288,7 +353,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		14EFEA4B17E0755A00196F21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14EFEA5717E0755A00196F21 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14EFEA4C17E0755A00196F21 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		14B81755179B704F001A371C /* Sources */ = {
@@ -306,6 +395,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		14EFEA4917E0755A00196F21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14FD460017E0763B0093810D /* RDCAsyncDownloader.m in Sources */,
+				14EFEA5A17E0755A00196F21 /* QuickNewsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -313,6 +411,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				14B81766179B704F001A371C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		14EFEA5517E0755A00196F21 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14EFEA5617E0755A00196F21 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -398,6 +504,36 @@
 			};
 			name = Release;
 		};
+		14EFEA5C17E0755A00196F21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuickNewsTests/QuickNewsTests-Prefix.pch";
+				INFOPLIST_FILE = "QuickNewsTests/QuickNewsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		14EFEA5D17E0755A00196F21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuickNewsTests/QuickNewsTests-Prefix.pch";
+				INFOPLIST_FILE = "QuickNewsTests/QuickNewsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -415,6 +551,15 @@
 			buildConfigurations = (
 				14B81792179B704F001A371C /* Debug */,
 				14B81793179B704F001A371C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14EFEA5E17E0755A00196F21 /* Build configuration list for PBXNativeTarget "QuickNewsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14EFEA5C17E0755A00196F21 /* Debug */,
+				14EFEA5D17E0755A00196F21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

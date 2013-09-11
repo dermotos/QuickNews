@@ -11,6 +11,7 @@
 @interface RDCAsyncDownloader : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @property (nonatomic, strong) void (^completionCallback)(void);
+@property (nonatomic, strong) void (^failureCallback)(void);
 @property (nonatomic, strong) NSMutableData *downloadedData;
 @property (nonatomic, assign) NSMutableDictionary *cache;
 

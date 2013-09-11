@@ -33,6 +33,9 @@
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     self.connection = nil;
     self.downloadedData = nil;
+    if(self.failureCallback)
+        self.failureCallback();
+    
 }
 
 
@@ -43,7 +46,7 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     if(self.completionCallback)
         self.completionCallback();
-    self.connection = nil; 
+    self.connection = nil;
 }
 
 
